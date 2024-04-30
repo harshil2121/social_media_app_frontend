@@ -7,7 +7,6 @@ const BACKEND_URI = process.env.REACT_APP_BACKEND_URI
 export const api = (token) => {
   if (typeof token === "string" && token.split(".").length === 3)
     return axios.create({
-      // withCredentials: true,
       baseURL: `${BACKEND_URI}/`,
       headers: { Authorization: token },
     });
@@ -36,8 +35,8 @@ export const handleError = (err) => {
     localStorage.setItem("isLogin", false);
     localStorage.setItem("accessToken", null);
     document.cookie = document.cookie = `token= ;SameSite=strict;max-age=0}`;
-    if (window.location.pathname !== "/login") {
-      window.location = "/login";
+    if (window.location.pathname !== "/") {
+      window.location = "/";
     }
   }
   return err.response.data;

@@ -3,23 +3,14 @@ import * as Yup from "yup";
 
 const formikEnhancer = withFormik({
   validationSchema: Yup.object().shape({
-    email: Yup.string()
-      .trim()
-      .email("The email you have entered is invalid")
-      .max(60)
-      .required("Please enter email"),
-    password: Yup.string()
-      .min(8)
-      .max(16)
-      .trim()
-      .required("Please enter password"),
+    description: Yup.string(),
   }),
   validateOnMount: true,
   mapPropsToValues: (props) => ({
-    email: "",
-    password: "",
+    description: "",
+    files: [],
   }),
-  handleSubmit: () => {},
+  handleSubmit: (values) => {},
   displayName: "CustomValidationForm",
   enableReinitialize: true,
 });
